@@ -1,0 +1,171 @@
+{
+	"info": {
+		"_postman_id": "98757119-dc14-4c65-a7c5-f81787c443e8",
+		"name": "KUSHKI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15675885"
+	},
+	"item": [
+		{
+			"name": "token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Public-Merchant-Id",
+						"value": "0a038e74bf724f87896e2368c73d1384",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"card\": {\r\n    \"name\": \"John Doe\",\r\n    \"number\": \"5451951574925480\",\r\n    \"expiryMonth\": \"08\",\r\n    \"expiryYear\": \"23\",\r\n    \"cvv\": \"121\"\r\n  },\r\n  \"totalAmount\": 1698,\r\n  \"currency\": \"COP\"\r\n}"
+				},
+				"url": {
+					"raw": "https://api-uat.kushkipagos.com/card/v1/tokens",
+					"protocol": "https",
+					"host": [
+						"api-uat",
+						"kushkipagos",
+						"com"
+					],
+					"path": [
+						"card",
+						"v1",
+						"tokens"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "charge",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Private-Merchant-Id",
+						"value": "e030c69ff2a6457083a1837082eb6c7e",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"token\": \"2108969e509945e1985b2c24faa42261\",\r\n  \"amount\": {\r\n    \"subtotalIva\": 0,\r\n    \"subtotalIva0\": 1698,\r\n    \"ice\": 0,\r\n    \"iva\": 0,\r\n    \"currency\": \"COP\"\r\n  },\r\n  \"metadata\": {\r\n    \"Referencia\": \"987654\"\r\n  },\r\n  \"contactDetails\": {\r\n    \"documentType\": \"CC\",\r\n    \"documentNumber\": \"1234567890\",\r\n    \"email\": \"user@example.com\",\r\n    \"firstName\": \"John\",\r\n    \"lastName\": \"Doe\",\r\n    \"phoneNumber\": \"+593912345678\"\r\n  },\r\n  \"orderDetails\": {\r\n    \"siteDomain\": \"example.com\",\r\n    \"shippingDetails\": {\r\n      \"name\": \"John Doe\",\r\n      \"phone\": \"+593912345678\",\r\n      \"address1\": \"Eloy Alfaro 139 y Catalina Aldaz\",\r\n      \"address2\": \"centro 123\",\r\n      \"city\": \"Quito\",\r\n      \"region\": \"Pichincha\",\r\n      \"country\": \"Ecuador\"\r\n    },\r\n    \"billingDetails\": {\r\n      \"name\": \"John Doe\",\r\n      \"phone\": \"+593912345678\",\r\n      \"address1\": \"Eloy Alfaro 139 y Catalina Aldaz\",\r\n      \"address2\": \"centro 123\",\r\n      \"city\": \"Quito\",\r\n      \"region\": \"Pichincha\",\r\n      \"country\": \"Ecuador\"\r\n    }\r\n  },\r\n  \"productDetails\": {\r\n    \"product\": [\r\n      {\r\n        \"id\": \"198952AB\",\r\n        \"title\": \"eBook Digital Services\",\r\n        \"price\": 10000,\r\n        \"sku\": \"10101042\",\r\n        \"quantity\": 1\r\n      },\r\n      {\r\n        \"id\": \"198953AB\",\r\n        \"title\": \"eBook Virtual Selling\",\r\n        \"price\": 6980,\r\n        \"sku\": \"004834GQ\",\r\n        \"quantity\": 1\r\n      }\r\n    ]\r\n  },\r\n  \"webhooks\": [\r\n    {\r\n      \"events\": [\r\n        \"approvedTransaction\",\r\n        \"declinedTransaction\"\r\n      ],\r\n      \"headers\": [\r\n        {\r\n          \"label\": \"json\",\r\n          \"value\": \"12\"\r\n        }\r\n      ],\r\n      \"urls\": [\r\n        \"https://eof2hhkrta4ooo1.m.pipedream.net\"\r\n      ]\r\n    }\r\n  ],\r\n  \"fullResponse\": \"v2\"\r\n}"
+				},
+				"url": {
+					"raw": "https://api-uat.kushkipagos.com/card/v1/charges",
+					"protocol": "https",
+					"host": [
+						"api-uat",
+						"kushkipagos",
+						"com"
+					],
+					"path": [
+						"card",
+						"v1",
+						"charges"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "void",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Private-Merchant-Id",
+						"value": "e030c69ff2a6457083a1837082eb6c7e",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"token\": \"2108969e509945e1985b2c24faa42261\",\r\n  \"amount\": {\r\n    \"subtotalIva\": 0,\r\n    \"subtotalIva0\": 1698,\r\n    \"ice\": 0,\r\n    \"iva\": 0,\r\n    \"currency\": \"COP\"\r\n  },\r\n  \"metadata\": {\r\n    \"Referencia\": \"987654\"\r\n  },\r\n  \"contactDetails\": {\r\n    \"documentType\": \"CC\",\r\n    \"documentNumber\": \"1234567890\",\r\n    \"email\": \"user@example.com\",\r\n    \"firstName\": \"John\",\r\n    \"lastName\": \"Doe\",\r\n    \"phoneNumber\": \"+593912345678\"\r\n  },\r\n  \"orderDetails\": {\r\n    \"siteDomain\": \"example.com\",\r\n    \"shippingDetails\": {\r\n      \"name\": \"John Doe\",\r\n      \"phone\": \"+593912345678\",\r\n      \"address1\": \"Eloy Alfaro 139 y Catalina Aldaz\",\r\n      \"address2\": \"centro 123\",\r\n      \"city\": \"Quito\",\r\n      \"region\": \"Pichincha\",\r\n      \"country\": \"Ecuador\"\r\n    },\r\n    \"billingDetails\": {\r\n      \"name\": \"John Doe\",\r\n      \"phone\": \"+593912345678\",\r\n      \"address1\": \"Eloy Alfaro 139 y Catalina Aldaz\",\r\n      \"address2\": \"centro 123\",\r\n      \"city\": \"Quito\",\r\n      \"region\": \"Pichincha\",\r\n      \"country\": \"Ecuador\"\r\n    }\r\n  },\r\n  \"productDetails\": {\r\n    \"product\": [\r\n      {\r\n        \"id\": \"198952AB\",\r\n        \"title\": \"eBook Digital Services\",\r\n        \"price\": 10000,\r\n        \"sku\": \"10101042\",\r\n        \"quantity\": 1\r\n      },\r\n      {\r\n        \"id\": \"198953AB\",\r\n        \"title\": \"eBook Virtual Selling\",\r\n        \"price\": 6980,\r\n        \"sku\": \"004834GQ\",\r\n        \"quantity\": 1\r\n      }\r\n    ]\r\n  },\r\n  \"webhooks\": [\r\n    {\r\n      \"events\": [\r\n        \"approvedTransaction\",\r\n        \"declinedTransaction\"\r\n      ],\r\n      \"headers\": [\r\n        {\r\n          \"label\": \"json\",\r\n          \"value\": \"12\"\r\n        }\r\n      ],\r\n      \"urls\": [\r\n        \"https://eof2hhkrta4ooo1.m.pipedream.net\"\r\n      ]\r\n    }\r\n  ],\r\n  \"fullResponse\": \"v2\"\r\n}"
+				},
+				"url": {
+					"raw": "https://api-uat.kushkipagos.com/v1/charges/839847516003464673",
+					"protocol": "https",
+					"host": [
+						"api-uat",
+						"kushkipagos",
+						"com"
+					],
+					"path": [
+						"v1",
+						"charges",
+						"839847516003464673"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get transaction list",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Private-Merchant-Id",
+						"value": "e030c69ff2a6457083a1837082eb6c7e",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api-uat.kushkipagos.com/analytics/v1/transactions-list?from=2023-02-10T12%3A39%3A00.836&to=2023-02-10T17%3A53%3A00.000",
+					"protocol": "https",
+					"host": [
+						"api-uat",
+						"kushkipagos",
+						"com"
+					],
+					"path": [
+						"analytics",
+						"v1",
+						"transactions-list"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "2023-02-10T12%3A39%3A00.836"
+						},
+						{
+							"key": "to",
+							"value": "2023-02-10T17%3A53%3A00.000"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
