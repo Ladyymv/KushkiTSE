@@ -1,0 +1,119 @@
+Request------------------------------
+
+curl --location --request POST 'https://api-uat.kushkipagos.com/card/v1/charges' \
+--header 'Content-Type: application/json' \
+--header 'Private-Merchant-Id: e030c69ff2a6457083a1837082eb6c7e' \
+--data-raw '{
+  "token": "7d0803e52f2a47f0a246c695ab8d4b06",
+  "amount": {
+    "subtotalIva": 0,
+    "subtotalIva0": 2000,
+    "ice": 0,
+    "iva": 0,
+    "currency": "COP"
+  },
+  "metadata": {
+    "Referencia": "LadyymvTestKushki"
+  },
+  "contactDetails": {
+    "documentType": "CC",
+    "documentNumber": "1234567890",
+    "email": "lyvmeneses@gmail.com",
+    "firstName": "Lady",
+    "lastName": "Meneses",
+    "phoneNumber": "+573213389716"
+  },
+  "orderDetails": {
+    "siteDomain": "linkedin.com/in/ing-leidymeneses/",
+    "shippingDetails": {
+      "name": "Lady Meneses",
+      "phone": "+573213389716",
+      "address1": "Conjunto Los Ciruelos",
+      "city": "Villa del Rosario",
+      "region": "Norte de santanedr",
+      "country": "Colombia"
+    },
+    "billingDetails": {
+      "name": "Lady Meneses",
+      "phone": "+573213389716",
+      "address1": "Conjunto Los Ciruelos",
+      "city": "Villa del Rosario",
+      "region": "Norte de santanedr",
+      "country": "Colombia"
+    }
+  },
+  "productDetails": {
+    "product": [
+      {
+        "id": "198952AB",
+        "title": "eBook Digital Services",
+        "price": 10000,
+        "sku": "10101042",
+        "quantity": 1
+      },
+      {
+        "id": "198953AB",
+        "title": "eBook Virtual Selling",
+        "price": 6980,
+        "sku": "004834GQ",
+        "quantity": 1
+      }
+    ]
+  },
+  "webhooks": [
+    {
+      "events": [
+        "approvedTransaction",
+        "declinedTransaction"
+      ],
+      "headers": [
+        {
+          "label": "json",
+          "value": "12"
+        }
+      ],
+      "urls": [
+        "https://webhook.site/e79ef95c-9431-405b-b9dc-f0ab291687e0"
+      ]
+    }
+  ],
+  "fullResponse": "v2"
+}'
+
+Response------------------------------
+
+{
+    "details": {
+        "amount": {
+            "subtotalIva": 0,
+            "subtotalIva0": 2000,
+            "ice": 0,
+            "iva": 0,
+            "currency": "COP"
+        },
+        "approvalCode": "000000",
+        "approvedTransactionAmount": 2000,
+        "binInfo": {
+            "bank": "Banco de la Produccion S.A. (PRODUBANCO)",
+            "bindCard": "545195",
+            "cardCountry": "Ecuador",
+            "lastFourDigits": "5480",
+            "type": "credit"
+        },
+        "cardHolderName": "Lady",
+        "created": 1676131356000,
+        "merchantId": "20000000102520220000",
+        "merchantName": "Lady Colombia",
+        "paymentBrand": "Mastercard",
+        "processorBankName": "0032~BANCO INTERNACIONAL",
+        "requestAmount": 2000,
+        "responseCode": "000",
+        "responseText": "Transacción aprobada",
+        "transactionId": "920685690416472950",
+        "transactionReference": "23fc0ef8-4fef-4699-aab1-2122cd31c5f2",
+        "transactionStatus": "APPROVAL",
+        "transactionType": "SALE"
+    },
+    "ticketNumber": "721086087994941044",
+    "transactionReference": "23fc0ef8-4fef-4699-aab1-2122cd31c5f2"
+}

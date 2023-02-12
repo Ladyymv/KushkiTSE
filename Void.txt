@@ -1,0 +1,69 @@
+Request------------------------------
+
+curl --location --request DELETE 'https://api-uat.kushkipagos.com/v1/charges/721086087994941044' \
+--header 'Content-Type: application/json' \
+--header 'Private-Merchant-Id: e030c69ff2a6457083a1837082eb6c7e' \
+--data-raw '{
+  "fullResponse": "v2",
+  "amount": {
+    "subtotalIva": 1000,
+    "subtotalIva0": 0,
+    "ice": 0,
+    "iva": 0,
+    "currency": "COP"
+  },
+  "webhooks": [
+    {
+      "events": [
+        "approvedTransaction"
+      ],
+      "headers": [
+        {
+          "label": "json",
+          "value": "12"
+        }
+      ],
+      "urls": [
+        "https://webhook.site/e79ef95c-9431-405b-b9dc-f0ab291687e0"
+      ]
+    }
+  ]
+}'
+
+Response------------------------------
+
+{
+    "details": {
+        "acquirerBank": "Davivienda",
+        "saleTicketNumber": "721086087994941044",
+        "amount": {
+            "subtotalIva0": 2000,
+            "ice": 0,
+            "currency": "COP",
+            "iva": 0,
+            "subtotalIva": 0
+        },
+        "approvalCode": "000000",
+        "approvedTransactionAmount": 1000,
+        "binInfo": {
+            "bank": "Banco de la Produccion S.A. (PRODUBANCO)",
+            "binCard": "545195",
+            "lastFourDigits": "5480",
+            "type": "credit"
+        },
+        "cardHolderName": "Lady",
+        "created": 1676131356000,
+        "merchantId": "20000000102520220000",
+        "merchantName": "Lady Colombia",
+        "paymentBrand": "Mastercard",
+        "processorBankName": "0032~BANCO INTERNACIONAL",
+        "requestAmount": 1000,
+        "responseCode": "000",
+        "responseText": "Transacción aprobada",
+        "transactionId": "1676131589637015589",
+        "transactionStatus": "INITIALIZED",
+        "transactionType": "VOID"
+    },
+    "ticketNumber": "661676131589637733",
+    "transactionReference": "525018f4-250f-4f45-9fc8-d410ab8454fa"
+}

@@ -1,0 +1,22 @@
+Request------------------------------
+
+curl --location --request POST 'https://api-uat.kushkipagos.com/card/v1/tokens' \
+--header 'Content-Type: application/json' \
+--header 'Public-Merchant-Id: 0a038e74bf724f87896e2368c73d1384' \
+--data-raw '{
+  "card": {
+    "name": "Lady",
+    "number": "5451951574925480",
+    "expiryMonth": "08",
+    "expiryYear": "23",
+    "cvv": "777"
+  },
+  "totalAmount": 2000,
+  "currency": "COP"
+}'
+
+Response------------------------------
+
+{
+    "token": "7d0803e52f2a47f0a246c695ab8d4b06"
+}
